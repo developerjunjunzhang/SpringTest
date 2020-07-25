@@ -23,12 +23,6 @@ public class AccountTest {
     @Autowired
     private AccountService accountService;
 
-//    @Before
-//    public void init () {
-//        ca = new AnnotationConfigApplicationContext(SpringConfiguration.class);
-//        accountService = ca.getBean("accountServiceImpl", AccountServiceImpl.class);
-//    }
-
     @Test
     public void testFindAll () {
         List<Account> accounts = accountService.findAllAccount();
