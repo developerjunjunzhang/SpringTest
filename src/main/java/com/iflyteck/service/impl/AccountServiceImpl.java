@@ -20,111 +20,50 @@ public class AccountServiceImpl implements AccountService {
     private TransactionManager transactionManager;
 
     public List<Account> findAllAccount() {
-        try {
-            // 开启事务
-            transactionManager.beginTransaction();
-            // 执行操作
-            List<Account> accounts = accountDao.findAllAccount();
-            // 提交事务
-            transactionManager.commit();
-            // 返回结果
-            return accounts;
-        } catch (Exception e) {
-            transactionManager.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            transactionManager.realese();
-        }
+        return accountDao.findAllAccount();
     }
 
     public Account findOneAccount(Integer id) {
-        try {
-            // 开启事务
-            transactionManager.beginTransaction();
-            // 执行操作
-            Account account = accountDao.findAccountById(id);
-            // 提交事务
-            transactionManager.commit();
-            // 返回结果
-            return account;
-        } catch (Exception e) {
-            transactionManager.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            transactionManager.realese();
-        }
+        return accountDao.findAccountById(id);
     }
 
     public void saveAccount(Account account) {
-        try {
-            // 开启事务
-            transactionManager.beginTransaction();
-            // 执行操作
-             accountDao.saveAccount(account);
-            // 提交事务
-            transactionManager.commit();
-            // 返回结果
-        } catch (Exception e) {
-            transactionManager.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            transactionManager.realese();
-        }
+        accountDao.saveAccount(account);
     }
 
     public void updateAccount(Account account) {
-        try {
-            // 开启事务
-            transactionManager.beginTransaction();
-            // 执行操作
-            accountDao.updateAccount(account);
-            // 提交事务
-            transactionManager.commit();
-            // 返回结果
-        } catch (Exception e) {
-            transactionManager.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            transactionManager.realese();
-        }
+        accountDao.updateAccount(account);
     }
 
     public void deleteAccount(Integer id) {
-        try {
-            // 开启事务
-            transactionManager.beginTransaction();
-            // 执行操作
-            accountDao.deleteAccount(id);
-            // 提交事务
-            transactionManager.commit();
-            // 返回结果
-        } catch (Exception e) {
-            transactionManager.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            transactionManager.realese();
-        }
+        accountDao.deleteAccount(id);
     }
 
     public void transfer(String sourceName, String targetName, Float money) {
-        try {
-            // 开启事务
-            transactionManager.beginTransaction();
-            // 执行操作
-            Account sourceAccount = accountDao.findAccountByName(sourceName);
-            Account targetAccount = accountDao.findAccountByName(targetName);
-            sourceAccount.setMoney(sourceAccount.getMoney() - money);
-            targetAccount.setMoney(targetAccount.getMoney() + money);
-            accountDao.updateAccount(sourceAccount);
-            accountDao.updateAccount(targetAccount);
-            // 提交事务
-            transactionManager.commit();
-            // 返回结果
-        } catch (Exception e) {
-            transactionManager.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            transactionManager.realese();
-        }
+//        try {
+//            // 开启事务
+//            transactionManager.beginTransaction();
+//            // 执行操作
+//            Account sourceAccount = accountDao.findAccountByName(sourceName);
+//            Account targetAccount = accountDao.findAccountByName(targetName);
+//            sourceAccount.setMoney(sourceAccount.getMoney() - money);
+//            targetAccount.setMoney(targetAccount.getMoney() + money);
+//            accountDao.updateAccount(sourceAccount);
+//            accountDao.updateAccount(targetAccount);
+//            // 提交事务
+//            transactionManager.commit();
+//            // 返回结果
+//        } catch (Exception e) {
+//            transactionManager.rollback();
+//            throw new RuntimeException(e);
+//        } finally {
+//            transactionManager.realese();
+//        }
+        Account sourceAccount = accountDao.findAccountByName(sourceName);
+        Account targetAccount = accountDao.findAccountByName(targetName);
+        sourceAccount.setMoney(sourceAccount.getMoney() - money);
+        targetAccount.setMoney(targetAccount.getMoney() + money);
+        accountDao.updateAccount(sourceAccount);
+        accountDao.updateAccount(targetAccount);
     }
 }
