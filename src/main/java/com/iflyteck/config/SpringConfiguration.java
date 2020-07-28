@@ -10,9 +10,10 @@ import javax.sql.DataSource;
  * 该类是一个配置类，它的作用和bean.xml是一样的
  *
  */
-@Configuration
-@ComponentScan("com.iflyteck")
-@Import(JdbcConfig.class)
-@PropertySource("classpath:jdbcConfig.properties")
+@Configuration // 标明是一个配置类
+@ComponentScan("com.iflyteck") // 开启包扫描
+@EnableAspectJAutoProxy // 开启注解aop的支持
+@Import(JdbcConfig.class) // 导入配置类
+@PropertySource("classpath:jdbcConfig.properties") // 引入配置文件
 public class SpringConfiguration {
 }

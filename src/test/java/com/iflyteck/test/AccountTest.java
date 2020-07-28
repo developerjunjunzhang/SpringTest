@@ -61,6 +61,6 @@ public class AccountTest {
 
     @Test
     public void testTransfer () {
-        accountService.transfer("mmm","bbb",100f);
+        accountService.transfer("aaa","bbb",100f);
     }
 }

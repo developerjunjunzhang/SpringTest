@@ -26,14 +26,18 @@ public class BeanFactory {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 Object rtValue = null;
                 try {
+                    // 开启事务
                     transactionManager.beginTransaction();
                     rtValue = method.invoke(accountService, args);
+                    // 提交事务
                     transactionManager.commit();
                     return rtValue;
                 } catch (Exception e) {
+                    // 回滚事务
                     transactionManager.rollback();
                     throw new RuntimeException(e);
                 } finally {
+                    // 释放连接
                     transactionManager.realese();
                 }
             }
