@@ -22,7 +22,7 @@ import java.util.List;
 public class AccountTest {
 
     @Autowired
-    @Qualifier("accountServiceProxy")
+    // @Qualifier("accountServiceProxy")
     private AccountService accountService;
 
     @Test
