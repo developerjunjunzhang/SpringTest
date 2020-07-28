@@ -6,6 +6,12 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * 其实也可以不用这个类，直接在TransactionManager类中标记为切面类，添加环绕通知，也可以实现事务的控制
+ * 注意一个问题点：
+ *      spring中的事务控制，不可使用前置、后置、异常、最终四个通知结合完成，因为他们的执行顺序最终通知在后置通知之前执行
+ *      故在没有提交事务的时候，已经释放连接了
+ */
 @Component("logger")
 @Aspect // 表示当前类是一个切面类
 public class Logger {
