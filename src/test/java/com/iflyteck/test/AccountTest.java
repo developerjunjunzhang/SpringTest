@@ -22,42 +22,7 @@ import java.util.List;
 public class AccountTest {
 
     @Autowired
-    // @Qualifier("accountServiceProxy")
     private AccountService accountService;
-
-    @Test
-    public void testFindAll () {
-        List<Account> accounts = accountService.findAllAccount();
-        for (Account account : accounts) {
-            System.out.println(account);
-        }
-    }
-
-    @Test
-    public void testFindOne () {
-        Account account = accountService.findOneAccount(1);
-        System.out.println(account);
-    }
-
-    @Test
-    public void testSave () {
-        Account account = new Account();
-        account.setName("test");
-        account.setMoney(1234f);
-        accountService.saveAccount(account);
-    }
-
-    @Test
-    public void testUpdate () {
-        Account account = accountService.findOneAccount(1);
-        account.setName("mmm");
-        accountService.updateAccount(account);
-    }
-
-    @Test
-    public void testDelete () {
-        accountService.deleteAccount(4);
-    }
 
     @Test
     public void testTransfer () {

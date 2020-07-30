@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
@@ -28,10 +29,15 @@ public class JdbcConfig {
      * @param dataSource
      * @return
      */
-    @Bean(name = "queryRunner")
-    @Scope("prototype")
-    public QueryRunner createQueryRunner (@Qualifier("dataSource") DataSource dataSource) {
-        return new QueryRunner(dataSource);
+//    @Bean(name = "queryRunner")
+//    @Scope("prototype")
+//    public QueryRunner createQueryRunner (@Qualifier("dataSource") DataSource dataSource) {
+//        return new QueryRunner(dataSource);
+//    }
+
+    @Bean(name = "jdbcTemplate")
+    public JdbcTemplate createJdbcTempate (DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
     }
 
     @Bean(name = "dataSource")
