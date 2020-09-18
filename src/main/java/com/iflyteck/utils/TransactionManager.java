@@ -21,7 +21,7 @@ public class TransactionManager {
     }
 
     /**
-     * 开启事务
+     * 提交事务
      */
     public void commit () {
         try{
@@ -32,7 +32,7 @@ public class TransactionManager {
     }
 
     /**
-     * 开启事务
+     * 回滚事务
      */
     public void rollback () {
         try{
@@ -43,7 +43,7 @@ public class TransactionManager {
     }
 
     /**
-     * 开启事务
+     * 释放资源
      */
     public void realese () {
         try{
